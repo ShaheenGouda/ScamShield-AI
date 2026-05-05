@@ -1,50 +1,51 @@
 <p align="center">
-  <img src="assets/ui.png" width="900"/>
+  <img src="assets/ui.png" width="850"/>
 </p>
 
 # 🛡️ ScamShield AI
-
 ### Hybrid Ensemble-Based URL Phishing Detection System
 
 ---
 
-## 📌 Overview
+## 🚀 Overview
 
-ScamShield AI is an advanced URL phishing detection system built using classical machine learning techniques. The system combines engineered structural URL features with a stacking ensemble model to detect malicious phishing URLs.
+ScamShield AI is an advanced URL phishing detection system built using classical machine learning and hybrid reputation filtering.
 
-To improve real-world reliability, a reputation-based whitelist (derived from top global domains) is integrated, forming a hybrid detection architecture.
+The system combines engineered structural URL features with a stacking ensemble model to detect malicious phishing URLs at scale.
 
-The model was trained on over 549,000 labeled URLs and achieves strong classification performance with robust generalization.
+### ✅ Key Highlights
+
+- Trained on 549,000+ labeled URLs  
+- Stacking Ensemble (Random Forest + Gradient Boosting + Logistic Regression)  
+- Cross-Validated ROC-AUC ≈ 0.93  
+- F1-Optimized Decision Threshold ≈ 0.402  
+- Hybrid ML + Domain Whitelist Filtering  
+- Interactive Streamlit Deployment  
 
 ---
 
 ## 🧠 System Architecture
 
-The system consists of four major components:
+### 1️⃣ Feature Engineering
 
-### 1️⃣ Feature Engineering Layer
+Extracted structural features include:
 
-Extracts structural features from raw URLs, including:
-
-- URL length  
-- Hostname length  
-- Path depth  
-- Digit ratio  
-- Special character ratio  
-- Subdomain count  
-- TLD length  
-- Shannon entropy  
-- Suspicious keyword count  
-- HTTPS indicator  
-- IP address detection  
-
-These features capture common phishing URL patterns.
+- URL length
+- Hostname length
+- Path depth
+- Subdomain count
+- Digit ratio
+- Special character ratio
+- Shannon entropy
+- Suspicious keyword count
+- HTTPS indicator
+- IP address detection
 
 ---
 
-### 2️⃣ Machine Learning Layer
+### 2️⃣ Machine Learning Model
 
-A stacking ensemble model is used:
+Stacking Ensemble:
 
 Base learners:
 - Random Forest (balanced)
@@ -54,50 +55,74 @@ Base learners:
 Meta learner:
 - Logistic Regression
 
-Stratified cross-validation ensures stable and reliable performance.
+Stratified cross-validation ensures stable performance.
 
 ---
 
-### 3️⃣ Threshold Calibration
+### 3️⃣ Threshold Optimization
 
-Instead of using the default 0.5 classification threshold, the decision boundary is optimized using F1-score maximization, balancing precision and recall.
+The decision threshold is optimized using F1-score maximization instead of the default 0.5.
 
-Selected Threshold: ~0.40
+Selected threshold ≈ 0.402.
 
 ---
 
-### 4️⃣ Reputation Filtering (Hybrid Logic)
+### 4️⃣ Hybrid Reputation Filtering
 
-A whitelist derived from the Tranco Top Domains list is used to reduce false positives for highly trusted domains.
+A whitelist derived from top global domains (Tranco list) reduces false positives.
 
-Final decision logic:
+Decision logic:
 
-If domain is in whitelist → SAFE  
+If domain ∈ whitelist → SAFE  
 Else → ML prediction using optimized threshold  
 
 ---
 
 ## 📊 Model Performance
 
-Cross-Validated ROC-AUC: ~0.928  
-Test ROC-AUC: ~0.933  
-Best F1 Score: ~0.79  
-Optimized Threshold: ~0.402  
+| Model | ROC-AUC |
+|-------|---------|
+| Logistic Regression | ~0.79 |
+| Random Forest | ~0.91 |
+| Gradient Boosting | ~0.87 |
+| **Stacking Ensemble** | **~0.93** |
 
-The model demonstrates strong phishing detection capability while maintaining balanced precision and recall.
+Best F1 Score ≈ 0.79  
+Phishing Recall ≥ 80%
 
 ---
 
-## 📈 Evaluation Plots
+## 📈 Evaluation Visualizations
 
-The following evaluation visualizations are generated:
+### ROC Curve
+<p align="center">
+  <img src="assets/roc.png" width="600"/>
+</p>
 
-- ROC Curve (models/roc_curve.png)
-- Precision-Recall Curve (models/pr_curve.png)
-- Confusion Matrix (models/confusion_matrix.png)
-- Feature Importance Ranking (models/feature_importance.png)
+### Precision-Recall Curve
+<p align="center">
+  <img src="assets/pr.png" width="600"/>
+</p>
 
-Feature importance analysis shows that entropy, suspicious keyword count, and digit ratio are dominant predictive signals.
+### Confusion Matrix
+<p align="center">
+  <img src="assets/confusion_matrix.png" width="600"/>
+</p>
+
+### Feature Importance
+<p align="center">
+  <img src="assets/importance.png" width="600"/>
+</p>
+
+### Safe Test
+<p align="center">
+  <img src="assets/safe.png" width="800"/>
+</p>
+
+### Unsafe Test
+<p align="center">
+  <img src="assets/unsafe.png" width="800"/>
+</p>
 
 ---
 
@@ -105,29 +130,39 @@ Feature importance analysis shows that entropy, suspicious keyword count, and di
 
 ### 1️⃣ Create Virtual Environment
 
+```bash
 python -m venv venv
+```
 
-Activate:
+Activate (Windows):
 
+```bash
 venv\Scripts\activate
+```
 
 ---
 
 ### 2️⃣ Install Dependencies
 
+```bash
 pip install -r requirements.txt
+```
 
 ---
 
 ### 3️⃣ Train Model
 
+```bash
 python -m src.train_model
+```
 
 ---
 
 ### 4️⃣ Run Streamlit App
 
+```bash
 streamlit run app/app.py
+```
 
 ---
 
@@ -135,88 +170,42 @@ streamlit run app/app.py
 
 Run automated tests:
 
+```bash
 pytest
-
-Includes:
-- Feature extraction validation
-- Model prediction verification
+```
 
 ---
 
 ## ⚠️ Limitations
 
-- The system relies solely on structural URL features.
-- It does not analyze webpage content.
-- It does not use external threat intelligence APIs.
-- Domain age and WHOIS data are not included.
-- Advanced adversarial mimicry may evade detection.
+- No webpage content analysis  
+- No WHOIS/domain age features  
+- No external threat intelligence APIs  
+- Structural-only detection may miss advanced adversarial attacks  
 
 ---
 
 ## 🔮 Future Improvements
 
-- Domain age and WHOIS integration
-- Content-based HTML feature extraction
-- Model calibration curve analysis
-- Real-time reputation API integration
-- Deployment via Docker
-
----
-
-## 🏆 Key Contributions
-
-- Advanced structural feature engineering
-- Stacking ensemble architecture
-- Cross-validated evaluation
-- F1-optimized threshold selection
-- Hybrid ML + reputation filtering system
-- Production-style UI implementation
+- Domain age integration  
+- HTML content analysis  
+- Model calibration curves  
+- Docker deployment  
 
 ---
 
 ## 📚 Technologies Used
 
-- Python
-- scikit-learn
-- pandas
-- matplotlib
-- seaborn
-- Streamlit
-- pytest
+- Python  
+- scikit-learn  
+- pandas  
+- matplotlib  
+- seaborn  
+- Streamlit  
+- pytest  
 
 ---
 
 ## 📌 Project Type
 
 Classical Machine Learning (No Deep Learning)
-
----
-
-This project demonstrates a production-style classical ML pipeline with explainability, calibration, and hybrid decision logic suitable for academic evaluation and portfolio presentation.
-
-## 📸 Screenshots
-
-<p align="center">
-  <img src="assets/ui.png" width="800"/>
-</p>
-
-<p align="center">
-  <img src="assets/roc.png" width="600"/>
-</p>
-
-<p align="center">
-  <img src="assets/importance.png" width="600"/>
-</p>
-
-<p align="center">
-  <img src="assets/training.png" width="800"/>
-</p>
-
-<p align="center">
-  <img src="assets/safe.png" width="800"/>
-</p>
-
-<p align="center">
-  <img src="assets/unsafe.png" width="800"/>
-</p>
-
