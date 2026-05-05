@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/ui.png" width="700">
+</p>
+
 # 🛡️ ScamShield AI
 ### Hybrid Ensemble-Based URL Phishing Detection System
 
@@ -188,3 +192,13 @@ Classical Machine Learning (No Deep Learning)
 ---
 
 This project demonstrates a production-style classical ML pipeline with explainability, calibration, and hybrid decision logic suitable for academic evaluation and portfolio presentation.
+
+## 📸 Screenshots
+
+![UI](assets/ui.png)
+![ROC Curve](assets/roc.png)
+![Feature Importance](assets/importance.png)
+![Training Result](assets/training_result.png)
+![Safe Result](assets/safe.png)
+![Unsafe Result](assets/unsafe.png)
+
