@@ -1,8 +1,9 @@
 <p align="center">
-  <img src="assets/ui.png" width="700">
+  <img src="assets/ui.png" width="900"/>
 </p>
 
 # 🛡️ ScamShield AI
+
 ### Hybrid Ensemble-Based URL Phishing Detection System
 
 ---
@@ -195,10 +196,27 @@ This project demonstrates a production-style classical ML pipeline with explaina
 
 ## 📸 Screenshots
 
-![UI](assets/ui.png)
-![ROC Curve](assets/roc.png)
-![Feature Importance](assets/importance.png)
-![Training Result](assets/training.png)
-![Safe Result](assets/safe.png)
-![Unsafe Result](assets/unsafe.png)
+<p align="center">
+  <img src="assets/ui.png" width="800"/>
+</p>
+
+<p align="center">
+  <img src="assets/roc.png" width="600"/>
+</p>
+
+<p align="center">
+  <img src="assets/importance.png" width="600"/>
+</p>
+
+<p align="center">
+  <img src="assets/training.png" width="800"/>
+</p>
+
+<p align="center">
+  <img src="assets/safe.png" width="800"/>
+</p>
+
+<p align="center">
+  <img src="assets/unsafe.png" width="800"/>
+</p>
 
