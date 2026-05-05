@@ -198,7 +198,7 @@ This project demonstrates a production-style classical ML pipeline with explaina
 ![UI](assets/ui.png)
 ![ROC Curve](assets/roc.png)
 ![Feature Importance](assets/importance.png)
-![Training Result](assets/training_result.png)
+![Training Result](assets/training.png)
 ![Safe Result](assets/safe.png)
 ![Unsafe Result](assets/unsafe.png)
 
